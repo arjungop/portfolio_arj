@@ -53,10 +53,12 @@ npx serve .
 
 1. **Home** — Hero with profile image, intro, and CTA buttons
 2. **Skills** — Pill-tag groups: LLMs & GenAI · Deep Learning · Infrastructure
-3. **Experience** — Timeline of work and leadership roles
-4. **Projects** — GitHub repo cards with live spotlight effect
-5. **Credentials** — Industry certifications (Columbia+, IBM, Forage, LinkedIn)
-6. **Contact** — Email + social links
+3. **Education** — Academic degrees and coursework
+4. **Experience** — Timeline of work and leadership roles
+5. **Publications** — Academic research papers and proceedings
+6. **Projects** — GitHub repo cards with live spotlight effect
+7. **Credentials** — Industry certifications and job simulations
+8. **Contact** — Email + social links
 
 ---
 

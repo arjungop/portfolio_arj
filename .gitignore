@@ -3,5 +3,5 @@
 .venv/
 *.pyc
 __pycache__/
-wesbite.png
+website.png
 profile.jpeg
