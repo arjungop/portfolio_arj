@@ -1180,25 +1180,31 @@
         .pub-links {
             display: flex;
             gap: 12px;
+            flex-wrap: wrap;
         }
 
-        .pub-links span {
+        .pub-btn {
             font-family: var(--hf);
-            font-size: 0.72rem;
+            font-size: 0.75rem;
             font-weight: 600;
-            letter-spacing: 0.08em;
+            letter-spacing: 0.06em;
             text-transform: uppercase;
             color: var(--text);
-            background: rgba(255,255,255,.05);
-            padding: 6px 12px;
+            background: rgba(255, 255, 255, .05);
+            padding: 8px 16px;
             border-radius: 4px;
             border: 1px solid var(--border);
-            transition: background .2s, border-color .2s;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: background .2s, border-color .2s, color .2s;
         }
 
-        .pub-card:hover .pub-links span {
-            background: rgba(255,255,255,.1);
-            border-color: rgba(255,255,255,.2);
+        .pub-btn:hover {
+            background: var(--accent-glow);
+            border-color: var(--accent);
+            color: var(--accent);
         }
 
         /* ═══════════════════════════════════════
@@ -1844,16 +1850,22 @@
                     <p class="description">Research on NLP and computational linguistics, focusing on linguistically-informed architectures.</p>
 
                     <div class="pub-grid">
-                        <a href="https://aclanthology.org/" target="_blank" class="pub-card">
+                        <div class="pub-card">
                             <div class="pub-title">LIMP: Linguistically-Informed Multi-Strategy Prompting for Telugu Multi-Turn Dialogue Generation</div>
                             <div class="pub-authors">Arjungopal Anilkumar, Suryansh Ram Menon</div>
-                            <div class="pub-meta">Proceedings of the Sixth Workshop on Speech, Vision, and Language Technologies for Dravidian Languages &middot; July 2026</div>
+                            <div class="pub-meta">ACL 2026 &middot; Proceedings of the Sixth Workshop on Speech, Vision, and Language Technologies for Dravidian Languages &middot; July 2026</div>
                             <div class="pub-desc">Generating contextually coherent multi-turn dialogue in Telugu requires resolving three deeply interacting constraints absent from generic LLM prompting: morphologically encoded social hierarchy, strict SOV agglutinative syntax, and culturally governed emotional logic formalised in Natyashastra rasa theory. We introduce LIMP, an inference-time, training-free framework that injects expert linguistic and cultural knowledge into prompt structure. We empirically evaluate two strategies on 10,000 stratified evaluation instances, demonstrating that sequential analytical commitment to linguistic constraints produces significantly more form-faithful Telugu than holistic constraint injection.</div>
                             <div class="pub-links">
-                                <span>PDF</span>
-                                <span>Scholar Article</span>
+                                <a href="https://aclanthology.org/2026.dravidianlangtech-1.5.pdf" target="_blank" class="pub-btn">
+                                    <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+                                    PDF Paper
+                                </a>
+                                <a href="https://scholar.google.com/citations?user=7_mBknoAAAAJ" target="_blank" class="pub-btn">
+                                    <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M12 3L1 9l4 2.18v6L12 21l7-3.82v-6l2-1.09V17h2V9L12 3zm6.82 6L12 12.72 5.18 9 12 5.28 18.82 9zM17 15.99l-5 2.73-5-2.73v-3.72L12 14.72l5-2.45v3.72z"/></svg>
+                                    Google Scholar
+                                </a>
                             </div>
-                        </a>
+                        </div>
                     </div>
                 </div>
             </div>
