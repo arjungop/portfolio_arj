@@ -11,8 +11,8 @@
     <meta property="og:type" content="website" />
     <meta property="og:image" content="./website.png" />
     
-    <link rel="icon" type="image/png" href="./website.png" />
-    <link rel="apple-touch-icon" href="./website.png" />
+    <link rel="icon" type="image/png" sizes="512x512" href="./favicon-512.png" />
+    <link rel="apple-touch-icon" sizes="512x512" href="./favicon-512.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <!-- Raleway: headings/nav · DM Sans: body -->
@@ -39,8 +39,8 @@
             --text: #f0f0f0;
             --text-light: rgba(240, 240, 240, .82);
             --text-muted: rgba(240, 240, 240, .5);
-            --accent: #b05252;
-            --accent-glow: rgba(176, 82, 82, .18);
+            --accent: #d27878;          /* lifted from #b05252 → 5.68:1 on --bg, passes WCAG AA */
+            --accent-glow: rgba(210, 120, 120, .18);
             --repo-name: #7faaee;
             --hf: 'Raleway', sans-serif;
             --bf: 'DM Sans', sans-serif;
@@ -104,9 +104,9 @@
             z-index: -1;
             pointer-events: none;
             background:
-                radial-gradient(circle at 15% 25%, rgba(176, 82, 82, 0.09) 0%, transparent 40%),
+                radial-gradient(circle at 15% 25%, rgba(210, 120, 120, 0.09) 0%, transparent 40%),
                 radial-gradient(circle at 85% 75%, rgba(127, 170, 238, 0.06) 0%, transparent 40%),
-                radial-gradient(circle at 50% 50%, rgba(176, 82, 82, 0.04) 0%, transparent 50%);
+                radial-gradient(circle at 50% 50%, rgba(210, 120, 120, 0.04) 0%, transparent 50%);
             filter: blur(80px);
             opacity: 0.8;
             will-change: transform;
@@ -172,6 +172,8 @@
             padding: 6px 14px;
             transition: color .25s;
             letter-spacing: 0.01em;
+            text-decoration: none;
+            display: block;
         }
 
         .menu .item:hover,
@@ -345,8 +347,8 @@
         }
 
         #home {
-            min-height: 100vh;
-            /* hero fills viewport */
+            min-height: 100vh;          /* fallback for browsers without svh/dvh */
+            min-height: 100svh;         /* iOS Safari 15.4+ — excludes dynamic chrome */
             padding-top: calc(var(--nav-h) + 80px);
             display: flex;
             align-items: center;
@@ -464,8 +466,156 @@
         }
 
         .btn-primary.filled:hover {
-            background: #c05e5e;
-            border-color: #c05e5e;
+            background: #e08e8e;
+            border-color: #e08e8e;
+        }
+
+        /* ═══════════════════════════════════════
+       SECTION 2.5 — EDUCATION
+    ═══════════════════════════════════════ */
+        .edu-grid {
+            margin-top: 2.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .edu-card {
+            display: flex;
+            gap: 1.4rem;
+            padding: 1.4rem 1.6rem;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            transition: border-color .25s, transform .25s;
+        }
+
+        .edu-card:hover {
+            border-color: rgba(255,255,255,.18);
+            transform: translateY(-2px);
+        }
+
+        .edu-year {
+            font-family: var(--hf);
+            font-size: 0.7rem;
+            color: var(--text-muted);
+            white-space: nowrap;
+            padding-top: 3px;
+            min-width: 72px;
+        }
+
+        .edu-body h3 {
+            font-family: var(--hf);
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--text);
+            margin-bottom: 0.2rem;
+        }
+
+        .edu-body .edu-degree {
+            font-size: 0.88rem;
+            color: var(--accent);
+            font-family: var(--hf);
+            font-weight: 500;
+            margin-bottom: 0.3rem;
+        }
+
+        .edu-body .edu-meta {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            margin-bottom: 0.8rem;
+        }
+
+        .edu-courses {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+
+        .edu-courses .pill {
+            font-size: 0.72rem;
+            padding: 3px 10px;
+        }
+
+        /* ── Project card preview banner ──────────────────────────────────── */
+        .repo-card.featured {
+            padding: 0;
+        }
+
+        .repo-card.featured .card-banner {
+            width: 100%;
+            height: 150px;
+            overflow: hidden;
+            border-radius: 10px 10px 0 0;
+            flex-shrink: 0;
+        }
+
+        .repo-card.featured .card-banner img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: top;
+            display: block;
+            transition: transform .4s ease;
+        }
+
+        .repo-card.featured:hover .card-banner img {
+            transform: scale(1.04);
+        }
+
+        .repo-card.featured .card-body {
+            padding: 18px 20px 16px;
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+        }
+
+        .metric-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            font-family: var(--hf);
+            font-size: 0.65rem;
+            font-weight: 700;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            color: #4ade80;
+            background: rgba(74, 222, 128, .1);
+            border: 1px solid rgba(74, 222, 128, .25);
+            padding: 3px 9px;
+            border-radius: 4px;
+            margin-bottom: 10px;
+            width: fit-content;
+        }
+
+        /* ── Availability badge ───────────────────────────────────────────── */
+        .availability-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(74, 222, 128, .07);
+            border: 1px solid rgba(74, 222, 128, .2);
+            border-radius: 6px;
+            padding: 8px 16px;
+            margin-bottom: 1.6rem;
+            font-family: var(--hf);
+            font-size: 0.8rem;
+            color: var(--text-light);
+        }
+
+        .availability-dot {
+            width: 8px;
+            height: 8px;
+            background: #4ade80;
+            border-radius: 50%;
+            flex-shrink: 0;
+            box-shadow: 0 0 8px rgba(74, 222, 128, .6);
+            animation: pulse-dot 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse-dot {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: .6; transform: scale(0.75); }
         }
 
         /* image side */
@@ -846,9 +996,71 @@
             flex-shrink: 0;
         }
 
-        /* ═══════════════════════════════════════
-       SECTION 5 — CREDENTIALS
-    ═══════════════════════════════════════ */
+        /* ── Back-to-top button ─────────────────────────────────────────────── */
+        .back-to-top {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 2.8rem;
+            font-family: var(--hf);
+            font-size: 0.78rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            text-decoration: none;
+            border: 1px solid var(--border);
+            border-radius: 3px;
+            padding: 8px 18px;
+            transition: color .25s, border-color .25s, background .25s;
+        }
+
+        .back-to-top:hover {
+            color: var(--text);
+            border-color: var(--accent);
+            background: var(--accent-glow);
+        }
+
+        .back-to-top svg {
+            width: 13px;
+            height: 13px;
+            flex-shrink: 0;
+        }
+
+        /* ── Credentials sub-label (separates real certs from simulations) ──── */
+        .cred-sub-label {
+            grid-column: 1 / -1;
+            font-family: var(--hf);
+            font-size: 0.65rem;
+            font-weight: 700;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-top: 0.4rem;
+        }
+
+        .cred-sub-label:first-child {
+            margin-top: 0;
+        }
+
+        .cred-sub-label::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: var(--border);
+        }
+
+        .cred-card.simulation {
+            border-style: dashed;
+            opacity: 0.82;
+        }
+
+        .cred-card.simulation:hover {
+            opacity: 1;
+        }
         .cred-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
@@ -904,6 +1116,89 @@
 
         .cred-card:hover .cred-link {
             gap: 9px;
+        }
+
+        /* ═══════════════════════════════════════
+       SECTION 3.5 — PUBLICATIONS
+    ═══════════════════════════════════════ */
+        .pub-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        
+        .pub-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 22px 24px;
+            transition: border-color .25s, transform .25s;
+            text-decoration: none;
+            display: block;
+        }
+
+        .pub-card:hover {
+            border-color: rgba(255, 255, 255, .2);
+            transform: translateY(-3px);
+        }
+
+        .pub-title {
+            font-family: var(--hf);
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: var(--text);
+            margin-bottom: 0.4rem;
+            line-height: 1.4;
+        }
+
+        .pub-authors {
+            font-size: 0.85rem;
+            color: var(--text-light);
+            margin-bottom: 0.4rem;
+        }
+
+        .pub-meta {
+            font-size: 0.8rem;
+            color: var(--accent);
+            font-family: var(--hf);
+            font-weight: 500;
+            margin-bottom: 1.2rem;
+        }
+
+        .pub-desc {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+            display: -webkit-box;
+            -webkit-line-clamp: 4;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            margin-bottom: 1.2rem;
+        }
+
+        .pub-links {
+            display: flex;
+            gap: 12px;
+        }
+
+        .pub-links span {
+            font-family: var(--hf);
+            font-size: 0.72rem;
+            font-weight: 600;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--text);
+            background: rgba(255,255,255,.05);
+            padding: 6px 12px;
+            border-radius: 4px;
+            border: 1px solid var(--border);
+            transition: background .2s, border-color .2s;
+        }
+
+        .pub-card:hover .pub-links span {
+            background: rgba(255,255,255,.1);
+            border-color: rgba(255,255,255,.2);
         }
 
         /* ═══════════════════════════════════════
@@ -1038,6 +1333,8 @@
             cursor: pointer;
             padding: 12px 24px;
             transition: color .2s;
+            text-decoration: none;
+            display: block;
         }
 
         .mobile-menu .m-item:hover {
@@ -1109,6 +1406,27 @@
             }
         }
     </style>
+    <!-- JSON-LD Person schema for rich-result / SEO -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Arjungopal Anilkumar",
+        "url": "https://arjungopal.dev",
+        "email": "arjungopal660@gmail.com",
+        "jobTitle": "AI / ML Engineer",
+        "alumniOf": {
+            "@type": "CollegeOrUniversity",
+            "name": "Amrita Vishwa Vidyapeetham"
+        },
+        "knowsAbout": ["Large Language Models", "NLP", "Deep Learning", "Apache Kafka", "Apache Spark", "RAG Pipelines", "Multi-Agent Systems"],
+        "sameAs": [
+            "https://github.com/arjungop",
+            "https://linkedin.com/in/arjungopal-anilkumar",
+            "https://x.com/Arjg22"
+        ]
+    }
+    </script>
 </head>
 
 <body>
@@ -1117,13 +1435,15 @@
     <div class="bg-mesh"></div>
 
     <!-- MOBILE OVERLAY -->
-    <div class="mobile-menu" id="mobileMenu">
-        <div class="m-item" data-section="0">Home</div>
-        <div class="m-item" data-section="1">Skills</div>
-        <div class="m-item" data-section="2">Experience</div>
-        <div class="m-item" data-section="3">Projects</div>
-        <div class="m-item" data-section="4">Credentials</div>
-        <div class="m-item" data-section="5">Contact</div>
+    <div class="mobile-menu" id="mobileMenu" role="dialog" aria-modal="true" aria-label="Navigation menu">
+        <a href="#home"         class="m-item" data-section="0" tabindex="0">Home</a>
+        <a href="#skills"       class="m-item" data-section="1" tabindex="0">Skills</a>
+        <a href="#education"    class="m-item" data-section="2" tabindex="0">Education</a>
+        <a href="#experience"   class="m-item" data-section="3" tabindex="0">Experience</a>
+        <a href="#publications" class="m-item" data-section="4" tabindex="0">Publications</a>
+        <a href="#projects"     class="m-item" data-section="5" tabindex="0">Projects</a>
+        <a href="#credentials"  class="m-item" data-section="6" tabindex="0">Credentials</a>
+        <a href="#contact"      class="m-item" data-section="7" tabindex="0">Contact</a>
     </div>
 
     <!-- NAV -->
@@ -1133,13 +1453,15 @@
                 <h1>Arjun<br /><span>Gopal.</span></h1>
             </a>
         </div>
-        <ul class="menu">
-            <li class="item selected" data-section="0">Home</li>
-            <li class="item" data-section="1">Skills</li>
-            <li class="item" data-section="2">Experience</li>
-            <li class="item" data-section="3">Projects</li>
-            <li class="item" data-section="4">Credentials</li>
-            <li class="item" data-section="5">Contact</li>
+        <ul class="menu" role="list">
+            <li><a href="#home"         class="item selected" data-section="0">Home</a></li>
+            <li><a href="#skills"       class="item" data-section="1">Skills</a></li>
+            <li><a href="#education"    class="item" data-section="2">Education</a></li>
+            <li><a href="#experience"   class="item" data-section="3">Experience</a></li>
+            <li><a href="#publications" class="item" data-section="4">Publications</a></li>
+            <li><a href="#projects"     class="item" data-section="5">Projects</a></li>
+            <li><a href="#credentials"  class="item" data-section="6">Credentials</a></li>
+            <li><a href="#contact"      class="item" data-section="7">Contact</a></li>
         </ul>
     </header>
 
@@ -1169,6 +1491,12 @@
         <div class="slider-wrap" data-section="5">
             <div class="slider"></div>
         </div>
+        <div class="slider-wrap" data-section="6">
+            <div class="slider"></div>
+        </div>
+        <div class="slider-wrap" data-section="7">
+            <div class="slider"></div>
+        </div>
     </div>
 
     <!-- LEFT BOTTOM: SCROLL TEXT -->
@@ -1181,6 +1509,11 @@
                     <svg viewBox="0 0 16 16" fill="currentColor">
                         <path
                             d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8" />
+                    </svg>
+                </a></li>
+            <li><a href="https://scholar.google.com/citations?user=7_mBknoAAAAJ" target="_blank" aria-label="Google Scholar">
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 3L1 9l4 2.18v6L12 21l7-3.82v-6l2-1.09V17h2V9L12 3zm6.82 6L12 12.72 5.18 9 12 5.28 18.82 9zM17 15.99l-5 2.73-5-2.73v-3.72L12 14.72l5-2.45v3.72z"/>
                     </svg>
                 </a></li>
             <li><a href="https://linkedin.com/in/arjungopal-anilkumar" target="_blank" aria-label="LinkedIn">
@@ -1225,14 +1558,23 @@
                         <div class="intro-links">
                             <a href="./Arjungopal%20Anilkumar_Doc.pdf" target="_blank" class="btn-primary filled">Download Resume</a>
                             <a href="#contact" class="btn-primary">Get in Touch</a>
+                            <a href="#projects" class="btn-primary" id="heroProjectsCta">View Projects ↓</a>
                         </div>
                     </div>
 
                     <div class="flat-image reveal">
                         <div class="image-main">
-                            <img src="./profile.png" alt="Arjungopal Anilkumar">
-                            <!-- FIX: fallback shown when no image present -->
-                            <div class="img-fallback">
+                            <img
+                                src="./profile.webp"
+                                alt="Arjungopal Anilkumar — portrait"
+                                width="700"
+                                height="808"
+                                loading="eager"
+                                decoding="async"
+                                onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"
+                            >
+                            <!-- Shown only when image fails to load -->
+                            <div class="img-fallback" aria-hidden="true">
                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
                                     <path
                                         d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z" />
@@ -1313,6 +1655,50 @@
 
         <div class="section-rule"></div>
 
+        <!-- ── SECTION 2.5: EDUCATION ────────────────────────────────────── -->
+        <div class="page-section" id="education">
+            <div class="fp-section">
+                <div class="reveal">
+                    <h2>Education.</h2>
+                    <p class="description">Academic foundation in AI-specialised computer science, with strong performance across core and advanced coursework.</p>
+
+                    <div class="edu-grid">
+
+                        <div class="edu-card">
+                            <div class="edu-year">2023 – Present</div>
+                            <div class="edu-body">
+                                <h3>Amrita Vishwa Vidyapeetham</h3>
+                                <div class="edu-degree">B.Tech — Computer Science Engineering (AI)</div>
+                                <div class="edu-meta">Coimbatore, Tamil Nadu &middot; CGPA 7.72</div>
+                                <div class="edu-courses">
+                                    <span class="pill">Deep Learning</span>
+                                    <span class="pill">Natural Language Processing</span>
+                                    <span class="pill">Data Structures &amp; Algorithms</span>
+                                    <span class="pill">Cloud Computing</span>
+                                    <span class="pill">Database Management</span>
+                                    <span class="pill">Computer Vision</span>
+                                    <span class="pill">Operating Systems</span>
+                                    <span class="pill">Software Engineering</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="edu-card">
+                            <div class="edu-year">2021 – 2023</div>
+                            <div class="edu-body">
+                                <h3>St. Jude Public School</h3>
+                                <div class="edu-degree">Higher Secondary — Computer Science Stream</div>
+                                <div class="edu-meta">Thrissur, Kerala &middot; 86%</div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section-rule"></div>
+
         <!-- ── SECTION 3: EXPERIENCE ──────────────────────────────────────── -->
         <div class="page-section" id="experience">
             <div class="fp-section">
@@ -1332,12 +1718,18 @@
                                     <div class="timeline-content">
                                         <h3>Paramount Computer Systems</h3>
                                         <div class="timeline-meta">
-                                            <span class="t-role">AI Engineer</span>
+                                            <span class="t-role">Artificial Intelligence Engineer</span>
                                             <span class="t-badge">Internship</span>
-                                            <span class="t-date">April 2026 – Present</span>
+                                            <span class="t-date">Apr 2026 – Present</span>
+                                            <span class="t-loc">Hybrid</span>
                                         </div>
                                         <ul>
-                                            <li>Contributing to AI engineering workflows and system development.</li>
+                                            <li>Engineered and debugged core AI module pipelines within an Agile SCRUM
+                                                environment, executing rigorous end-to-end UAT testing to minimize
+                                                deployment bug frequency.</li>
+                                            <li>Architected and documented scalable codebase components for internal
+                                                enterprise systems, optimizing API query response times and overall
+                                                system latency.</li>
                                         </ul>
                                     </div>
                                 </div>
@@ -1444,6 +1836,31 @@
 
         <div class="section-rule"></div>
 
+        <!-- ── SECTION 3.5: PUBLICATIONS ────────────────────────────────────── -->
+        <div class="page-section" id="publications">
+            <div class="fp-section">
+                <div class="reveal">
+                    <h2>Publications.</h2>
+                    <p class="description">Research on NLP and computational linguistics, focusing on linguistically-informed architectures.</p>
+
+                    <div class="pub-grid">
+                        <a href="https://aclanthology.org/" target="_blank" class="pub-card">
+                            <div class="pub-title">LIMP: Linguistically-Informed Multi-Strategy Prompting for Telugu Multi-Turn Dialogue Generation</div>
+                            <div class="pub-authors">Arjungopal Anilkumar, Suryansh Ram Menon</div>
+                            <div class="pub-meta">Proceedings of the Sixth Workshop on Speech, Vision, and Language Technologies for Dravidian Languages &middot; July 2026</div>
+                            <div class="pub-desc">Generating contextually coherent multi-turn dialogue in Telugu requires resolving three deeply interacting constraints absent from generic LLM prompting: morphologically encoded social hierarchy, strict SOV agglutinative syntax, and culturally governed emotional logic formalised in Natyashastra rasa theory. We introduce LIMP, an inference-time, training-free framework that injects expert linguistic and cultural knowledge into prompt structure. We empirically evaluate two strategies on 10,000 stratified evaluation instances, demonstrating that sequential analytical commitment to linguistic constraints produces significantly more form-faithful Telugu than holistic constraint injection.</div>
+                            <div class="pub-links">
+                                <span>PDF</span>
+                                <span>Scholar Article</span>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section-rule"></div>
+
         <!-- ── SECTION 4: PROJECTS ────────────────────────────────────────── -->
         <div class="page-section" id="projects">
             <div class="fp-section">
@@ -1470,98 +1887,125 @@
 
                     <div class="repos">
 
-                        <a href="https://github.com/arjungop/AegisSOC" target="_blank" class="repo-card">
-                            <div class="repo-title">
-                                <svg viewBox="0 0 16 16">
-                                    <path fill-rule="evenodd"
-                                        d="M2 2.5A2.5 2.5 0 014.5 0h8.75a.75.75 0 01.75.75v12.5a.75.75 0 01-.75.75h-2.5a.75.75 0 110-1.5h1.75v-2h-8a1 1 0 00-.714 1.7.75.75 0 01-1.072 1.05A2.495 2.495 0 012 11.5v-9zm10.5-1V9h-8c-.356 0-.694.074-1 .208V2.5a1 1 0 011-1h8zM5 12.25v3.25a.25.25 0 00.4.2l1.45-1.087a.25.25 0 01.3 0L8.6 15.7a.25.25 0 00.4-.2v-3.25a.25.25 0 00-.25-.25h-3.5a.25.25 0 00-.25.25z" />
-                                </svg>
-                                <span class="repo-name">AegisSOC</span>
+                        <a href="https://github.com/arjungop/AegisSOC" target="_blank" class="repo-card featured">
+                            <div class="card-banner">
+                                <img src="./aegissoc-preview.webp" alt="AegisSOC dashboard preview" width="800" height="800" loading="lazy">
                             </div>
-                            <div class="repo-desc">Automated SOC pipeline with multi-agent AI orchestration. Triages
-                                1,000+ alerts/day, analyses intrusion logs via RAG retrieval, and generates incident
-                                response playbooks using LangChain agents.</div>
-                            <div class="repo-footer">
-                                <span class="lang-dot" style="background:#3572a5;"></span><span>Python</span>
-                            </div>
-                        </a>
-
-                        <a href="https://github.com/arjungop/CareSyncOS" target="_blank" class="repo-card">
-                            <div class="repo-title">
-                                <svg viewBox="0 0 16 16">
-                                    <path fill-rule="evenodd"
-                                        d="M2 2.5A2.5 2.5 0 014.5 0h8.75a.75.75 0 01.75.75v12.5a.75.75 0 01-.75.75h-2.5a.75.75 0 110-1.5h1.75v-2h-8a1 1 0 00-.714 1.7.75.75 0 01-1.072 1.05A2.495 2.495 0 012 11.5v-9zm10.5-1V9h-8c-.356 0-.694.074-1 .208V2.5a1 1 0 011-1h8zM5 12.25v3.25a.25.25 0 00.4.2l1.45-1.087a.25.25 0 01.3 0L8.6 15.7a.25.25 0 00.4-.2v-3.25a.25.25 0 00-.25-.25h-3.5a.25.25 0 00-.25.25z" />
-                                </svg>
-                                <span class="repo-name">CareSyncOS</span>
-                            </div>
-                            <div class="repo-desc">Full-stack hospital OS handling 500+ patient records with AI-driven
-                                EHR automation, LLM-powered health coaching, and intelligent medical record
-                                summarisation. React · Node.js · OpenAI.</div>
-                            <div class="repo-footer">
-                                <span class="lang-dot" style="background:#f1e05a;"></span><span>JavaScript</span>
+                            <div class="card-body">
+                                <div class="metric-badge">↑ 35% threat-detection accuracy</div>
+                                <div class="repo-title">
+                                    <svg viewBox="0 0 16 16">
+                                        <path fill-rule="evenodd"
+                                            d="M2 2.5A2.5 2.5 0 014.5 0h8.75a.75.75 0 01.75.75v12.5a.75.75 0 01-.75.75h-2.5a.75.75 0 110-1.5h1.75v-2h-8a1 1 0 00-.714 1.7.75.75 0 01-1.072 1.05A2.495 2.495 0 012 11.5v-9zm10.5-1V9h-8c-.356 0-.694.074-1 .208V2.5a1 1 0 011-1h8zM5 12.25v3.25a.25.25 0 00.4.2l1.45-1.087a.25.25 0 01.3 0L8.6 15.7a.25.25 0 00.4-.2v-3.25a.25.25 0 00-.25-.25h-3.5a.25.25 0 00-.25.25z" />
+                                    </svg>
+                                    <span class="repo-name">AegisSOC</span>
+                                </div>
+                                <div class="repo-desc">Automated SOC pipeline with multi-agent AI orchestration. Triages 1,000+ alerts/day, analyses intrusion logs via RAG retrieval, and generates incident response playbooks using LangChain agents.</div>
+                                <div class="repo-footer">
+                                    <span class="lang-dot" style="background:#3572a5;"></span><span>Python</span>
+                                </div>
                             </div>
                         </a>
 
-                        <a href="https://github.com/arjungop/OmniMark" target="_blank" class="repo-card">
-                            <div class="repo-title">
-                                <svg viewBox="0 0 16 16">
-                                    <path fill-rule="evenodd"
-                                        d="M2 2.5A2.5 2.5 0 014.5 0h8.75a.75.75 0 01.75.75v12.5a.75.75 0 01-.75.75h-2.5a.75.75 0 110-1.5h1.75v-2h-8a1 1 0 00-.714 1.7.75.75 0 01-1.072 1.05A2.495 2.495 0 012 11.5v-9zm10.5-1V9h-8c-.356 0-.694.074-1 .208V2.5a1 1 0 011-1h8zM5 12.25v3.25a.25.25 0 00.4.2l1.45-1.087a.25.25 0 01.3 0L8.6 15.7a.25.25 0 00.4-.2v-3.25a.25.25 0 00-.25-.25h-3.5a.25.25 0 00-.25.25z" />
-                                </svg>
-                                <span class="repo-name">OmniMark</span>
+                        <a href="https://github.com/arjungop/CareSyncOS" target="_blank" class="repo-card featured">
+                            <div class="card-banner">
+                                <img src="./caresyncos-preview.webp" alt="CareSyncOS dashboard preview" width="800" height="800" loading="lazy">
                             </div>
-                            <div class="repo-desc">ABM engine segmenting 10K+ prospect records and generating
+                            <div class="card-body">
+                                <div class="metric-badge">500+ patient records · AI-driven EHR</div>
+                                <div class="repo-title">
+                                    <svg viewBox="0 0 16 16">
+                                        <path fill-rule="evenodd"
+                                            d="M2 2.5A2.5 2.5 0 014.5 0h8.75a.75.75 0 01.75.75v12.5a.75.75 0 01-.75.75h-2.5a.75.75 0 110-1.5h1.75v-2h-8a1 1 0 00-.714 1.7.75.75 0 01-1.072 1.05A2.495 2.495 0 012 11.5v-9zm10.5-1V9h-8c-.356 0-.694.074-1 .208V2.5a1 1 0 011-1h8zM5 12.25v3.25a.25.25 0 00.4.2l1.45-1.087a.25.25 0 01.3 0L8.6 15.7a.25.25 0 00.4-.2v-3.25a.25.25 0 00-.25-.25h-3.5a.25.25 0 00-.25.25z" />
+                                    </svg>
+                                    <span class="repo-name">CareSyncOS</span>
+                                </div>
+                                <div class="repo-desc">Full-stack hospital OS handling 500+ patient records with AI-driven EHR automation, LLM-powered health coaching, and intelligent medical record summarisation. React · Node.js · OpenAI.</div>
+                                <div class="repo-footer">
+                                    <span class="lang-dot" style="background:#f1e05a;"></span><span>JavaScript</span>
+                                </div>
+                            </div>
+                        </a>
+
+                        <a href="https://github.com/arjungop/OmniMark" target="_blank" class="repo-card featured">
+                            <div class="card-banner">
+                                <img src="./omnimark-preview.webp" alt="OmniMark dashboard preview" width="800" height="800" loading="lazy">
+                            </div>
+                            <div class="card-body">
+                                <div class="metric-badge">60% reduction in manual effort</div>
+                                <div class="repo-title">
+                                    <svg viewBox="0 0 16 16">
+                                        <path fill-rule="evenodd"
+                                            d="M2 2.5A2.5 2.5 0 014.5 0h8.75a.75.75 0 01.75.75v12.5a.75.75 0 01-.75.75h-2.5a.75.75 0 110-1.5h1.75v-2h-8a1 1 0 00-.714 1.7.75.75 0 01-1.072 1.05A2.495 2.495 0 012 11.5v-9zm10.5-1V9h-8c-.356 0-.694.074-1 .208V2.5a1 1 0 011-1h8zM5 12.25v3.25a.25.25 0 00.4.2l1.45-1.087a.25.25 0 01.3 0L8.6 15.7a.25.25 0 00.4-.2v-3.25a.25.25 0 00-.25-.25h-3.5a.25.25 0 00-.25.25z" />
+                                    </svg>
+                                    <span class="repo-name">OmniMark</span>
+                                </div>
+                                <div class="repo-desc">ABM engine segmenting 10K+ prospect records and generating
                                 personalised campaign content via LLM pipelines. Reduced manual copywriting effort by
                                 60% through automated audience targeting.</div>
-                            <div class="repo-footer">
-                                <span class="lang-dot" style="background:#3572a5;"></span><span>Python</span>
+                                <div class="repo-footer">
+                                    <span class="lang-dot" style="background:#3572a5;"></span><span>Python</span>
+                                </div>
                             </div>
                         </a>
 
-                        <a href="https://github.com/arjungop/beyond-autocomplete-ngram-llm" target="_blank"
-                            class="repo-card">
-                            <div class="repo-title">
-                                <svg viewBox="0 0 16 16">
-                                    <path fill-rule="evenodd"
-                                        d="M2 2.5A2.5 2.5 0 014.5 0h8.75a.75.75 0 01.75.75v12.5a.75.75 0 01-.75.75h-2.5a.75.75 0 110-1.5h1.75v-2h-8a1 1 0 00-.714 1.7.75.75 0 01-1.072 1.05A2.495 2.495 0 012 11.5v-9zm10.5-1V9h-8c-.356 0-.694.074-1 .208V2.5a1 1 0 011-1h8zM5 12.25v3.25a.25.25 0 00.4.2l1.45-1.087a.25.25 0 01.3 0L8.6 15.7a.25.25 0 00.4-.2v-3.25a.25.25 0 00-.25-.25h-3.5a.25.25 0 00-.25.25z" />
-                                </svg>
-                                <span class="repo-name">beyond-autocomplete-ngram-llm</span>
+                        <a href="https://github.com/arjungop/beyond-autocomplete-ngram-llm" target="_blank" class="repo-card featured">
+                            <div class="card-banner">
+                                <img src="./ngram-preview.webp" alt="N-gram language model evaluation dashboard" width="800" height="800" loading="lazy">
                             </div>
-                            <div class="repo-desc">1–4 gram language models with Laplace smoothing. 17% accuracy gain
-                                over baseline, evaluated via BLEU and perplexity on 50K+ token corpora.</div>
-                            <div class="repo-footer">
-                                <span class="lang-dot" style="background:#3572a5;"></span><span>Python</span>
-                            </div>
-                        </a>
-
-                        <a href="https://github.com/arjungop/adversarial-cryptography" target="_blank"
-                            class="repo-card">
-                            <div class="repo-title">
-                                <svg viewBox="0 0 16 16">
-                                    <path fill-rule="evenodd"
-                                        d="M2 2.5A2.5 2.5 0 014.5 0h8.75a.75.75 0 01.75.75v12.5a.75.75 0 01-.75.75h-2.5a.75.75 0 110-1.5h1.75v-2h-8a1 1 0 00-.714 1.7.75.75 0 01-1.072 1.05A2.495 2.495 0 012 11.5v-9zm10.5-1V9h-8c-.356 0-.694.074-1 .208V2.5a1 1 0 011-1h8zM5 12.25v3.25a.25.25 0 00.4.2l1.45-1.087a.25.25 0 01.3 0L8.6 15.7a.25.25 0 00.4-.2v-3.25a.25.25 0 00-.25-.25h-3.5a.25.25 0 00-.25.25z" />
-                                </svg>
-                                <span class="repo-name">adversarial-cryptography</span>
-                            </div>
-                            <div class="repo-desc">Adversarial neural networks that learn symmetric encryption from
-                                scratch. Alice, Bob, and Eve agents trained on 16-bit plaintext — achieving near-perfect
-                                secrecy with zero pre-programmed cryptographic logic.</div>
-                            <div class="repo-footer">
-                                <span class="lang-dot" style="background:#3572a5;"></span><span>Python</span>
+                            <div class="card-body">
+                                <div class="metric-badge">17% accuracy gain · BLEU + perplexity</div>
+                                <div class="repo-title">
+                                    <svg viewBox="0 0 16 16">
+                                        <path fill-rule="evenodd"
+                                            d="M2 2.5A2.5 2.5 0 014.5 0h8.75a.75.75 0 01.75.75v12.5a.75.75 0 01-.75.75h-2.5a.75.75 0 110-1.5h1.75v-2h-8a1 1 0 00-.714 1.7.75.75 0 01-1.072 1.05A2.495 2.495 0 012 11.5v-9zm10.5-1V9h-8c-.356 0-.694.074-1 .208V2.5a1 1 0 011-1h8zM5 12.25v3.25a.25.25 0 00.4.2l1.45-1.087a.25.25 0 01.3 0L8.6 15.7a.25.25 0 00.4-.2v-3.25a.25.25 0 00-.25-.25h-3.5a.25.25 0 00-.25.25z" />
+                                    </svg>
+                                    <span class="repo-name">beyond-autocomplete-ngram-llm</span>
+                                </div>
+                                <div class="repo-desc">1–4 gram language models with Laplace smoothing. 17% accuracy gain over baseline, evaluated via BLEU and perplexity on 50K+ token corpora.</div>
+                                <div class="repo-footer">
+                                    <span class="lang-dot" style="background:#3572a5;"></span><span>Python</span>
+                                </div>
                             </div>
                         </a>
 
-                        <a href="https://github.com/arjungop/bluesky-sentiment-pipeline" target="_blank" class="repo-card">
-                            <div class="repo-title">
-                                <svg viewBox="0 0 16 16">
-                                    <path fill-rule="evenodd"
-                                        d="M2 2.5A2.5 2.5 0 014.5 0h8.75a.75.75 0 01.75.75v12.5a.75.75 0 01-.75.75h-2.5a.75.75 0 110-1.5h1.75v-2h-8a1 1 0 00-.714 1.7.75.75 0 01-1.072 1.05A2.495 2.495 0 012 11.5v-9zm10.5-1V9h-8c-.356 0-.694.074-1 .208V2.5a1 1 0 011-1h8zM5 12.25v3.25a.25.25 0 00.4.2l1.45-1.087a.25.25 0 01.3 0L8.6 15.7a.25.25 0 00.4-.2v-3.25a.25.25 0 00-.25-.25h-3.5a.25.25 0 00-.25.25z" />
-                                </svg>
-                                <span class="repo-name">Axiom</span>
+                        <a href="https://github.com/arjungop/adversarial-cryptography" target="_blank" class="repo-card featured">
+                            <div class="card-banner">
+                                <img src="./adversarial-preview.webp" alt="Adversarial cryptography Alice Bob Eve agent network" width="800" height="800" loading="lazy">
                             </div>
-                            <div class="repo-desc">Real-time Bluesky social media sentiment pipeline: Lambda Architecture with Kafka, Spark, HDFS, PostgreSQL, Airflow, Grafana & custom BERTweet AI model.</div>
-                            <div class="repo-footer">
-                                <span class="lang-dot" style="background:#3572a5;"></span><span>Python / Big Data</span>
+                            <div class="card-body">
+                                <div class="metric-badge">Near-perfect secrecy · zero pre-programmed logic</div>
+                                <div class="repo-title">
+                                    <svg viewBox="0 0 16 16">
+                                        <path fill-rule="evenodd"
+                                            d="M2 2.5A2.5 2.5 0 014.5 0h8.75a.75.75 0 01.75.75v12.5a.75.75 0 01-.75.75h-2.5a.75.75 0 110-1.5h1.75v-2h-8a1 1 0 00-.714 1.7.75.75 0 01-1.072 1.05A2.495 2.495 0 012 11.5v-9zm10.5-1V9h-8c-.356 0-.694.074-1 .208V2.5a1 1 0 011-1h8zM5 12.25v3.25a.25.25 0 00.4.2l1.45-1.087a.25.25 0 01.3 0L8.6 15.7a.25.25 0 00.4-.2v-3.25a.25.25 0 00-.25-.25h-3.5a.25.25 0 00-.25.25z" />
+                                    </svg>
+                                    <span class="repo-name">adversarial-cryptography</span>
+                                </div>
+                                <div class="repo-desc">Adversarial neural networks that learn symmetric encryption from scratch. Alice, Bob, and Eve agents trained on 16-bit plaintext — achieving near-perfect secrecy with zero pre-programmed cryptographic logic.</div>
+                                <div class="repo-footer">
+                                    <span class="lang-dot" style="background:#3572a5;"></span><span>Python</span>
+                                </div>
+                            </div>
+                        </a>
+
+                        <a href="https://github.com/arjungop/bluesky-sentiment-pipeline" target="_blank" class="repo-card featured">
+                            <div class="card-banner">
+                                <img src="./axiom-preview.webp" alt="Axiom sentiment pipeline dashboard preview" width="800" height="800" loading="lazy">
+                            </div>
+                            <div class="card-body">
+                                <div class="metric-badge">Lambda arch · Kafka + Spark + BERTweet</div>
+                                <div class="repo-title">
+                                    <svg viewBox="0 0 16 16">
+                                        <path fill-rule="evenodd"
+                                            d="M2 2.5A2.5 2.5 0 014.5 0h8.75a.75.75 0 01.75.75v12.5a.75.75 0 01-.75.75h-2.5a.75.75 0 110-1.5h1.75v-2h-8a1 1 0 00-.714 1.7.75.75 0 01-1.072 1.05A2.495 2.495 0 012 11.5v-9zm10.5-1V9h-8c-.356 0-.694.074-1 .208V2.5a1 1 0 011-1h8zM5 12.25v3.25a.25.25 0 00.4.2l1.45-1.087a.25.25 0 01.3 0L8.6 15.7a.25.25 0 00.4-.2v-3.25a.25.25 0 00-.25-.25h-3.5a.25.25 0 00-.25.25z" />
+                                    </svg>
+                                    <span class="repo-name">Axiom</span>
+                                </div>
+                                <div class="repo-desc">Real-time Bluesky social media sentiment pipeline: Lambda Architecture with Kafka, Spark, HDFS, PostgreSQL, Airflow, Grafana &amp; custom BERTweet AI model.</div>
+                                <div class="repo-footer">
+                                    <span class="lang-dot" style="background:#3572a5;"></span><span>Python / Big Data</span>
+                                </div>
                             </div>
                         </a>
 
@@ -1582,6 +2026,9 @@
 
                     <div class="cred-grid">
 
+                        <!-- Real industry certifications -->
+                        <div class="cred-sub-label">Industry Certifications</div>
+
                         <a href="https://badges.plus.columbia.edu/51ac37e8-dc40-4a83-b087-834fb977b2d9" target="_blank"
                             class="cred-card">
                             <div>
@@ -1600,24 +2047,6 @@
                             <span class="cred-link">View Credential →</span>
                         </a>
 
-                        <a href="https://forage-uploads-prod.s3.amazonaws.com/completion-certificates/ifobHAoMjQs9s6bKS/gMTdCXwDdLYoXZ3wG_ifobHAoMjQs9s6bKS_68c17ae82621ca2c39e82903_1757518904932_completion_certificate.pdf"
-                            target="_blank" class="cred-card">
-                            <div>
-                                <div class="cred-title">Software Engineering Simulation</div>
-                                <div class="cred-meta">Forage (Electronic Arts) &middot; Oct 2025</div>
-                            </div>
-                            <span class="cred-link">View Credential →</span>
-                        </a>
-
-                        <a href="https://www.theforage.com/completion-certificates/j43dGscQHtJJ57N54/a77WE3de8qrxWferQ_j43dGscQHtJJ57N54_68c17ae82621ca2c39e82903_1760627443267_completion_certificate.pdf"
-                            target="_blank" class="cred-card">
-                            <div>
-                                <div class="cred-title">GenAI-Powered Data Analytics</div>
-                                <div class="cred-meta">Forage (Tata Group) &middot; Sep 2025</div>
-                            </div>
-                            <span class="cred-link">View Credential →</span>
-                        </a>
-
                         <a href="https://www.credly.com/badges/daff18d6-d378-495b-ae1e-87166b1901d5/linked_in_profile"
                             target="_blank" class="cred-card">
                             <div>
@@ -1632,6 +2061,27 @@
                             <div>
                                 <div class="cred-title">Artificial Intelligence Fundamentals</div>
                                 <div class="cred-meta">IBM &middot; Sep 2025</div>
+                            </div>
+                            <span class="cred-link">View Credential →</span>
+                        </a>
+
+                        <!-- Job simulations (Forage) -->
+                        <div class="cred-sub-label">Job Simulations</div>
+
+                        <a href="https://forage-uploads-prod.s3.amazonaws.com/completion-certificates/ifobHAoMjQs9s6bKS/gMTdCXwDdLYoXZ3wG_ifobHAoMjQs9s6bKS_68c17ae82621ca2c39e82903_1757518904932_completion_certificate.pdf"
+                            target="_blank" class="cred-card simulation">
+                            <div>
+                                <div class="cred-title">Software Engineering Simulation</div>
+                                <div class="cred-meta">Forage (Electronic Arts) &middot; Oct 2025</div>
+                            </div>
+                            <span class="cred-link">View Credential →</span>
+                        </a>
+
+                        <a href="https://www.theforage.com/completion-certificates/j43dGscQHtJJ57N54/a77WE3de8qrxWferQ_j43dGscQHtJJ57N54_68c17ae82621ca2c39e82903_1760627443267_completion_certificate.pdf"
+                            target="_blank" class="cred-card simulation">
+                            <div>
+                                <div class="cred-title">GenAI-Powered Data Analytics</div>
+                                <div class="cred-meta">Forage (Tata Group) &middot; Sep 2025</div>
                             </div>
                             <span class="cred-link">View Credential →</span>
                         </a>
@@ -1660,6 +2110,11 @@
                                     d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8" />
                             </svg>
                         </a>
+                        <a href="https://scholar.google.com/citations?user=7_mBknoAAAAJ" target="_blank" aria-label="Google Scholar">
+                            <svg viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 3L1 9l4 2.18v6L12 21l7-3.82v-6l2-1.09V17h2V9L12 3zm6.82 6L12 12.72 5.18 9 12 5.28 18.82 9zM17 15.99l-5 2.73-5-2.73v-3.72L12 14.72l5-2.45v3.72z"/>
+                            </svg>
+                        </a>
                         <a href="https://linkedin.com/in/arjungopal-anilkumar" target="_blank" aria-label="LinkedIn">
                             <svg viewBox="0 0 24 24" fill="currentColor">
                                 <path
@@ -1680,10 +2135,18 @@
                         </a>
                     </div>
 
-                    <!-- FIX: copyright here as static text — not position:fixed -->
+                    <!-- copyright as static text — not position:fixed -->
                     <div class="copyright">
                         Designed &amp; built by Arjungopal &copy; 2025.
                     </div>
+
+                    <!-- Back-to-top -->
+                    <a href="#home" class="back-to-top" aria-label="Back to top">
+                        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="4,10 8,6 12,10" />
+                        </svg>
+                        Back to top
+                    </a>
 
                 </div>
             </div>
@@ -1704,7 +2167,7 @@
             const sliders = document.querySelectorAll('.page-indicator .slider');
             const menuItems = document.querySelectorAll('.menu .item');
             const nextLabel = document.getElementById('nextSectionLabel');
-            const sectionNames = ['Home', 'Skills', 'Experience', 'Projects', 'Credentials', 'Contact'];
+            const sectionNames = ['Home', 'Skills', 'Education', 'Experience', 'Publications', 'Projects', 'Credentials', 'Contact'];
 
             // ── Lenis Smooth Scrolling ──────────────────────────────────────────
             if (typeof Lenis !== 'undefined' && typeof gsap !== 'undefined') {
@@ -1725,13 +2188,17 @@
                 });
                 gsap.ticker.lagSmoothing(0);
 
-                // ── GSAP Hero Section Resistance Pinning ───────────────────────────
-                ScrollTrigger.create({
-                    trigger: "#home",
-                    start: "top top",
-                    end: "+=45%", // Reduced duration creates a subtle "magnetic tug" rather than getting stuck
-                    pin: true,
-                    pinSpacing: true
+                // ── GSAP Hero Pinning — desktop only (≥861px) ──────────────────────
+                ScrollTrigger.matchMedia({
+                    "(min-width: 861px)": function() {
+                        ScrollTrigger.create({
+                            trigger: "#home",
+                            start: "top top",
+                            end: "+=30%",   // shorter pull; easier to scroll past
+                            pin: true,
+                            pinSpacing: true
+                        });
+                    }
                 });
             }
 
@@ -1751,7 +2218,8 @@
                 });
             }
 
-            // ── Premium UI: Cybernetic Text Decode ────────────────────────────────
+            // ── Cybernetic Text Decode — decorative Easter-egg on copyright only ────────────────────
+            // REMOVED from h2 name and .intro-eyebrow role (critical readable content)
             class CyberneticText {
                 constructor(element) {
                     this.element = element;
@@ -1768,17 +2236,16 @@
                             return this.chars[Math.floor(Math.random() * this.chars.length)];
                         }).join('');
                         if (iterations >= this.originalText.length) clearInterval(interval);
-                        iterations += 1 / 2; // Speed of decode
+                        iterations += 1 / 2;
                     }, 40);
                 }
             }
-            
+
+            // Fire decode on copyright only — harmless decorative use, not critical text
             setTimeout(() => {
-                const nameNode = document.querySelector('.intro-content h2');
-                const roleNode = document.querySelector('.intro-content .intro-eyebrow');
-                if (nameNode) new CyberneticText(nameNode);
-                if (roleNode) new CyberneticText(roleNode);
-            }, 100);
+                const copyrightNode = document.querySelector('.copyright');
+                if (copyrightNode) new CyberneticText(copyrightNode);
+            }, 800);
 
             // ── Reveal on scroll ────────────────────────────────────────────────
             const revealObs = new IntersectionObserver((entries) => {
@@ -1801,15 +2268,28 @@
             }, { threshold: 0.35 });
             sections.forEach(s => sectionObs.observe(s));
 
-            // ── Nav / dot click ──────────────────────────────────────────────────
+            // ── Nav click (smooth-scroll + active-state update) ──────────────────
+            // Native anchor href already handles keyboard + assistive-tech;
+            // JS intercepts click only to hand off to Lenis for smooth scroll.
             menuItems.forEach(item => {
-                item.addEventListener('click', () => {
-                    sections[+item.dataset.section].scrollIntoView({ behavior: 'smooth' });
+                item.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const target = sections[+item.dataset.section];
+                    if (target) target.scrollIntoView({ behavior: 'smooth' });
                 });
+                // keydown handled natively by the browser because items are <a> elements
             });
             document.querySelectorAll('.slider-wrap').forEach(wrap => {
                 wrap.addEventListener('click', () => {
-                    sections[+wrap.dataset.section].scrollIntoView({ behavior: 'smooth' });
+                    const target = sections[+wrap.dataset.section];
+                    if (target) target.scrollIntoView({ behavior: 'smooth' });
+                });
+                wrap.addEventListener('keydown', (e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        const target = sections[+wrap.dataset.section];
+                        if (target) target.scrollIntoView({ behavior: 'smooth' });
+                    }
                 });
             });
 
@@ -1829,10 +2309,16 @@
             });
 
             document.querySelectorAll('.mobile-menu .m-item').forEach(item => {
-                item.addEventListener('click', () => {
-                    sections[+item.dataset.section].scrollIntoView({ behavior: 'smooth' });
+                const closeMenu = (e) => {
+                    e.preventDefault();
                     burger.classList.remove('active');
                     mobileMenu.classList.remove('active');
+                    const target = sections[+item.dataset.section];
+                    if (target) target.scrollIntoView({ behavior: 'smooth' });
+                };
+                item.addEventListener('click', closeMenu);
+                item.addEventListener('keydown', (e) => {
+                    if (e.key === 'Enter' || e.key === ' ') closeMenu(e);
                 });
             });
 
