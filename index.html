@@ -10,7 +10,7 @@
         content="AI/ML Engineer specialising in LLMs, NLP pipelines, and cloud-deployed deep learning systems." />
     <meta property="og:type" content="website" />
     <meta property="og:image" content="./og-image.webp" />
-    
+
     <link rel="icon" type="image/png" sizes="512x512" href="./favicon-512.png" />
     <link rel="apple-touch-icon" sizes="512x512" href="./favicon-512.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -39,7 +39,8 @@
             --text: #f0f0f0;
             --text-light: rgba(240, 240, 240, .82);
             --text-muted: rgba(240, 240, 240, .65);
-            --accent: #d27878;          /* lifted from #b05252 → 5.68:1 on --bg, passes WCAG AA */
+            --accent: #d27878;
+            /* lifted from #b05252 → 5.68:1 on --bg, passes WCAG AA */
             --accent-glow: rgba(210, 120, 120, .18);
             --repo-name: #7faaee;
             --hf: 'Raleway', sans-serif;
@@ -53,18 +54,23 @@
         }
 
         /* ── LENIS OVERRIDES ───────────────────────────────────────────────── */
-        html.lenis, html.lenis body {
+        html.lenis,
+        html.lenis body {
             height: auto;
         }
+
         .lenis.lenis-smooth {
             scroll-behavior: auto !important;
         }
+
         .lenis.lenis-smooth [data-lenis-prevent] {
             overscroll-behavior: contain;
         }
+
         .lenis.lenis-stopped {
             overflow: hidden;
         }
+
         .lenis.lenis-smooth iframe {
             pointer-events: none;
         }
@@ -347,8 +353,10 @@
         }
 
         #home {
-            min-height: 100vh;          /* fallback for browsers without svh/dvh */
-            min-height: 100svh;         /* iOS Safari 15.4+ — excludes dynamic chrome */
+            min-height: 100vh;
+            /* fallback for browsers without svh/dvh */
+            min-height: 100svh;
+            /* iOS Safari 15.4+ — excludes dynamic chrome */
             padding-top: calc(var(--nav-h) + 80px);
             display: flex;
             align-items: center;
@@ -491,7 +499,7 @@
         }
 
         .edu-card:hover {
-            border-color: rgba(255,255,255,.18);
+            border-color: rgba(255, 255, 255, .18);
             transform: translateY(-2px);
         }
 
@@ -614,8 +622,17 @@
         }
 
         @keyframes pulse-dot {
-            0%, 100% { opacity: 1; transform: scale(1); }
-            50% { opacity: .6; transform: scale(0.75); }
+
+            0%,
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+
+            50% {
+                opacity: .6;
+                transform: scale(0.75);
+            }
         }
 
         /* image side */
@@ -1061,6 +1078,7 @@
         .cred-card.simulation:hover {
             opacity: 1;
         }
+
         .cred-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
@@ -1127,7 +1145,7 @@
             gap: 1.5rem;
             margin-top: 2rem;
         }
-        
+
         .pub-card {
             background: var(--bg-card);
             border: 1px solid var(--border);
@@ -1436,20 +1454,20 @@
 </head>
 
 <body>
-    
+
     <!-- Premium UI Layer: Background Mesh -->
     <div class="bg-mesh"></div>
 
     <!-- MOBILE OVERLAY -->
     <div class="mobile-menu" id="mobileMenu" role="dialog" aria-modal="true" aria-label="Navigation menu">
-        <a href="#home"         class="m-item" data-section="0" tabindex="0">Home</a>
-        <a href="#skills"       class="m-item" data-section="1" tabindex="0">Skills</a>
-        <a href="#education"    class="m-item" data-section="2" tabindex="0">Education</a>
-        <a href="#experience"   class="m-item" data-section="3" tabindex="0">Experience</a>
+        <a href="#home" class="m-item" data-section="0" tabindex="0">Home</a>
+        <a href="#skills" class="m-item" data-section="1" tabindex="0">Skills</a>
+        <a href="#education" class="m-item" data-section="2" tabindex="0">Education</a>
+        <a href="#experience" class="m-item" data-section="3" tabindex="0">Experience</a>
         <a href="#publications" class="m-item" data-section="4" tabindex="0">Publications</a>
-        <a href="#projects"     class="m-item" data-section="5" tabindex="0">Projects</a>
-        <a href="#credentials"  class="m-item" data-section="6" tabindex="0">Credentials</a>
-        <a href="#contact"      class="m-item" data-section="7" tabindex="0">Contact</a>
+        <a href="#projects" class="m-item" data-section="5" tabindex="0">Projects</a>
+        <a href="#credentials" class="m-item" data-section="6" tabindex="0">Credentials</a>
+        <a href="#contact" class="m-item" data-section="7" tabindex="0">Contact</a>
     </div>
 
     <!-- NAV -->
@@ -1460,14 +1478,14 @@
             </a>
         </div>
         <ul class="menu" role="list">
-            <li><a href="#home"         class="item selected" data-section="0">Home</a></li>
-            <li><a href="#skills"       class="item" data-section="1">Skills</a></li>
-            <li><a href="#education"    class="item" data-section="2">Education</a></li>
-            <li><a href="#experience"   class="item" data-section="3">Experience</a></li>
+            <li><a href="#home" class="item selected" data-section="0">Home</a></li>
+            <li><a href="#skills" class="item" data-section="1">Skills</a></li>
+            <li><a href="#education" class="item" data-section="2">Education</a></li>
+            <li><a href="#experience" class="item" data-section="3">Experience</a></li>
             <li><a href="#publications" class="item" data-section="4">Publications</a></li>
-            <li><a href="#projects"     class="item" data-section="5">Projects</a></li>
-            <li><a href="#credentials"  class="item" data-section="6">Credentials</a></li>
-            <li><a href="#contact"      class="item" data-section="7">Contact</a></li>
+            <li><a href="#projects" class="item" data-section="5">Projects</a></li>
+            <li><a href="#credentials" class="item" data-section="6">Credentials</a></li>
+            <li><a href="#contact" class="item" data-section="7">Contact</a></li>
         </ul>
     </header>
 
@@ -1517,9 +1535,11 @@
                             d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8" />
                     </svg>
                 </a></li>
-            <li><a href="https://scholar.google.com/citations?user=7_mBknoAAAAJ" target="_blank" aria-label="Google Scholar">
+            <li><a href="https://scholar.google.com/citations?user=7_mBknoAAAAJ" target="_blank"
+                    aria-label="Google Scholar">
                     <svg viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M12 3L1 9l4 2.18v6L12 21l7-3.82v-6l2-1.09V17h2V9L12 3zm6.82 6L12 12.72 5.18 9 12 5.28 18.82 9zM17 15.99l-5 2.73-5-2.73v-3.72L12 14.72l5-2.45v3.72z"/>
+                        <path
+                            d="M12 3L1 9l4 2.18v6L12 21l7-3.82v-6l2-1.09V17h2V9L12 3zm6.82 6L12 12.72 5.18 9 12 5.28 18.82 9zM17 15.99l-5 2.73-5-2.73v-3.72L12 14.72l5-2.45v3.72z" />
                     </svg>
                 </a></li>
             <li><a href="https://linkedin.com/in/arjungopal-anilkumar" target="_blank" aria-label="LinkedIn">
@@ -1562,7 +1582,8 @@
                             learning on cloud infrastructure. Every project prioritises production readiness: secure
                             pipelines, quantifiable accuracy improvements, and real-world data at scale.</p>
                         <div class="intro-links">
-                            <a href="./Arjungopal%20Anilkumar_Doc.pdf" target="_blank" class="btn-primary filled">Download Resume</a>
+                            <a href="./Arjungopal%20Anilkumar_Doc.pdf" target="_blank"
+                                class="btn-primary filled">Download Resume</a>
                             <a href="#contact" class="btn-primary">Get in Touch</a>
                             <a href="#projects" class="btn-primary" id="heroProjectsCta">View Projects ↓</a>
                         </div>
@@ -1570,15 +1591,9 @@
 
                     <div class="flat-image reveal">
                         <div class="image-main">
-                            <img
-                                src="./profile.webp"
-                                alt="Arjungopal Anilkumar — portrait"
-                                width="700"
-                                height="808"
-                                loading="eager"
-                                decoding="async"
-                                onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"
-                            >
+                            <img src="./profile.webp" alt="Arjungopal Anilkumar — portrait" width="700" height="808"
+                                loading="eager" decoding="async"
+                                onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
                             <!-- Shown only when image fails to load -->
                             <div class="img-fallback" aria-hidden="true">
                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
@@ -1666,7 +1681,8 @@
             <div class="fp-section">
                 <div class="reveal">
                     <h2>Education.</h2>
-                    <p class="description">Academic foundation in AI-specialised computer science, with strong performance across core and advanced coursework.</p>
+                    <p class="description">Academic foundation in AI-specialised computer science, with strong
+                        performance across core and advanced coursework.</p>
 
                     <div class="edu-grid">
 
@@ -1847,21 +1863,41 @@
             <div class="fp-section">
                 <div class="reveal">
                     <h2>Publications.</h2>
-                    <p class="description">Research on NLP and computational linguistics, focusing on linguistically-informed architectures.</p>
+                    <p class="description">Research on NLP and computational linguistics, focusing on
+                        linguistically-informed architectures.</p>
 
                     <div class="pub-grid">
                         <div class="pub-card">
-                            <div class="pub-title">LIMP: Linguistically-Informed Multi-Strategy Prompting for Telugu Multi-Turn Dialogue Generation</div>
+                            <div class="pub-title">LIMP: Linguistically-Informed Multi-Strategy Prompting for Telugu
+                                Multi-Turn Dialogue Generation</div>
                             <div class="pub-authors">Arjungopal Anilkumar, Suryansh Ram Menon</div>
-                            <div class="pub-meta">ACL 2026 &middot; Proceedings of the Sixth Workshop on Speech, Vision, and Language Technologies for Dravidian Languages &middot; July 2026</div>
-                            <div class="pub-desc">Generating contextually coherent multi-turn dialogue in Telugu requires resolving three deeply interacting constraints absent from generic LLM prompting: morphologically encoded social hierarchy, strict SOV agglutinative syntax, and culturally governed emotional logic formalised in Natyashastra rasa theory. We introduce LIMP, an inference-time, training-free framework that injects expert linguistic and cultural knowledge into prompt structure. We empirically evaluate two strategies on 10,000 stratified evaluation instances, demonstrating that sequential analytical commitment to linguistic constraints produces significantly more form-faithful Telugu than holistic constraint injection.</div>
+                            <div class="pub-meta">ACL 2026 &middot; Proceedings of the Sixth Workshop on Speech, Vision,
+                                and Language Technologies for Dravidian Languages &middot; July 2026</div>
+                            <div class="pub-desc">Generating contextually coherent multi-turn dialogue in Telugu
+                                requires resolving three deeply interacting constraints absent from generic LLM
+                                prompting: morphologically encoded social hierarchy, strict SOV agglutinative syntax,
+                                and culturally governed emotional logic formalised in Natyashastra rasa theory. We
+                                introduce LIMP, an inference-time, training-free framework that injects expert
+                                linguistic and cultural knowledge into prompt structure. We empirically evaluate two
+                                strategies on 10,000 stratified evaluation instances, demonstrating that sequential
+                                analytical commitment to linguistic constraints produces significantly more
+                                form-faithful Telugu than holistic constraint injection.</div>
                             <div class="pub-links">
-                                <a href="https://aclanthology.org/2026.dravidianlangtech-1.5.pdf" target="_blank" class="pub-btn">
-                                    <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+                                <a href="https://aclanthology.org/2026.dravidianlangtech-1.5.pdf" target="_blank"
+                                    class="pub-btn">
+                                    <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor"
+                                        stroke-width="2">
+                                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                                        <polyline points="14 2 14 8 20 8" />
+                                    </svg>
                                     PDF Paper
                                 </a>
-                                <a href="https://scholar.google.com/citations?user=7_mBknoAAAAJ" target="_blank" class="pub-btn">
-                                    <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M12 3L1 9l4 2.18v6L12 21l7-3.82v-6l2-1.09V17h2V9L12 3zm6.82 6L12 12.72 5.18 9 12 5.28 18.82 9zM17 15.99l-5 2.73-5-2.73v-3.72L12 14.72l5-2.45v3.72z"/></svg>
+                                <a href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=7_mBknoAAAAJ&citation_for_view=7_mBknoAAAAJ:u5HHmVD_uO8C"
+                                    target="_blank" class="pub-btn">
+                                    <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor">
+                                        <path
+                                            d="M12 3L1 9l4 2.18v6L12 21l7-3.82v-6l2-1.09V17h2V9L12 3zm6.82 6L12 12.72 5.18 9 12 5.28 18.82 9zM17 15.99l-5 2.73-5-2.73v-3.72L12 14.72l5-2.45v3.72z" />
+                                    </svg>
                                     Google Scholar
                                 </a>
                             </div>
@@ -1901,7 +1937,8 @@
 
                         <a href="https://github.com/arjungop/AegisSOC" target="_blank" class="repo-card featured">
                             <div class="card-banner">
-                                <img src="./aegissoc-preview.webp" alt="AegisSOC dashboard preview" width="800" height="800" loading="lazy">
+                                <img src="./aegissoc-preview.webp" alt="AegisSOC dashboard preview" width="800"
+                                    height="800" loading="lazy">
                             </div>
                             <div class="card-body">
                                 <div class="metric-badge">↑ 35% threat-detection accuracy</div>
@@ -1912,7 +1949,9 @@
                                     </svg>
                                     <span class="repo-name">AegisSOC</span>
                                 </div>
-                                <div class="repo-desc">Automated SOC pipeline with multi-agent AI orchestration. Triages 1,000+ alerts/day, analyses intrusion logs via RAG retrieval, and generates incident response playbooks using LangChain agents.</div>
+                                <div class="repo-desc">Automated SOC pipeline with multi-agent AI orchestration. Triages
+                                    1,000+ alerts/day, analyses intrusion logs via RAG retrieval, and generates incident
+                                    response playbooks using LangChain agents.</div>
                                 <div class="repo-footer">
                                     <span class="lang-dot" style="background:#3572a5;"></span><span>Python</span>
                                 </div>
@@ -1921,7 +1960,8 @@
 
                         <a href="https://github.com/arjungop/CareSyncOS" target="_blank" class="repo-card featured">
                             <div class="card-banner">
-                                <img src="./caresyncos-preview.webp" alt="CareSyncOS dashboard preview" width="800" height="800" loading="lazy">
+                                <img src="./caresyncos-preview.webp" alt="CareSyncOS dashboard preview" width="800"
+                                    height="800" loading="lazy">
                             </div>
                             <div class="card-body">
                                 <div class="metric-badge">500+ patient records · AI-driven EHR</div>
@@ -1932,7 +1972,9 @@
                                     </svg>
                                     <span class="repo-name">CareSyncOS</span>
                                 </div>
-                                <div class="repo-desc">Full-stack hospital OS handling 500+ patient records with AI-driven EHR automation, LLM-powered health coaching, and intelligent medical record summarisation. React · Node.js · OpenAI.</div>
+                                <div class="repo-desc">Full-stack hospital OS handling 500+ patient records with
+                                    AI-driven EHR automation, LLM-powered health coaching, and intelligent medical
+                                    record summarisation. React · Node.js · OpenAI.</div>
                                 <div class="repo-footer">
                                     <span class="lang-dot" style="background:#f1e05a;"></span><span>JavaScript</span>
                                 </div>
@@ -1941,7 +1983,8 @@
 
                         <a href="https://github.com/arjungop/OmniMark" target="_blank" class="repo-card featured">
                             <div class="card-banner">
-                                <img src="./omnimark-preview.webp" alt="OmniMark dashboard preview" width="800" height="800" loading="lazy">
+                                <img src="./omnimark-preview.webp" alt="OmniMark dashboard preview" width="800"
+                                    height="800" loading="lazy">
                             </div>
                             <div class="card-body">
                                 <div class="metric-badge">60% reduction in manual effort</div>
@@ -1953,17 +1996,20 @@
                                     <span class="repo-name">OmniMark</span>
                                 </div>
                                 <div class="repo-desc">ABM engine segmenting 10K+ prospect records and generating
-                                personalised campaign content via LLM pipelines. Reduced manual copywriting effort by
-                                60% through automated audience targeting.</div>
+                                    personalised campaign content via LLM pipelines. Reduced manual copywriting effort
+                                    by
+                                    60% through automated audience targeting.</div>
                                 <div class="repo-footer">
                                     <span class="lang-dot" style="background:#3572a5;"></span><span>Python</span>
                                 </div>
                             </div>
                         </a>
 
-                        <a href="https://github.com/arjungop/beyond-autocomplete-ngram-llm" target="_blank" class="repo-card featured">
+                        <a href="https://github.com/arjungop/beyond-autocomplete-ngram-llm" target="_blank"
+                            class="repo-card featured">
                             <div class="card-banner">
-                                <img src="./ngram-preview.webp" alt="N-gram language model evaluation dashboard" width="800" height="800" loading="lazy">
+                                <img src="./ngram-preview.webp" alt="N-gram language model evaluation dashboard"
+                                    width="800" height="800" loading="lazy">
                             </div>
                             <div class="card-body">
                                 <div class="metric-badge">17% accuracy gain · BLEU + perplexity</div>
@@ -1974,16 +2020,20 @@
                                     </svg>
                                     <span class="repo-name">beyond-autocomplete-ngram-llm</span>
                                 </div>
-                                <div class="repo-desc">1–4 gram language models with Laplace smoothing. 17% accuracy gain over baseline, evaluated via BLEU and perplexity on 50K+ token corpora.</div>
+                                <div class="repo-desc">1–4 gram language models with Laplace smoothing. 17% accuracy
+                                    gain over baseline, evaluated via BLEU and perplexity on 50K+ token corpora.</div>
                                 <div class="repo-footer">
                                     <span class="lang-dot" style="background:#3572a5;"></span><span>Python</span>
                                 </div>
                             </div>
                         </a>
 
-                        <a href="https://github.com/arjungop/adversarial-cryptography" target="_blank" class="repo-card featured">
+                        <a href="https://github.com/arjungop/adversarial-cryptography" target="_blank"
+                            class="repo-card featured">
                             <div class="card-banner">
-                                <img src="./adversarial-preview.webp" alt="Adversarial cryptography Alice Bob Eve agent network" width="800" height="800" loading="lazy">
+                                <img src="./adversarial-preview.webp"
+                                    alt="Adversarial cryptography Alice Bob Eve agent network" width="800" height="800"
+                                    loading="lazy">
                             </div>
                             <div class="card-body">
                                 <div class="metric-badge">Near-perfect secrecy · zero pre-programmed logic</div>
@@ -1994,16 +2044,20 @@
                                     </svg>
                                     <span class="repo-name">adversarial-cryptography</span>
                                 </div>
-                                <div class="repo-desc">Adversarial neural networks that learn symmetric encryption from scratch. Alice, Bob, and Eve agents trained on 16-bit plaintext — achieving near-perfect secrecy with zero pre-programmed cryptographic logic.</div>
+                                <div class="repo-desc">Adversarial neural networks that learn symmetric encryption from
+                                    scratch. Alice, Bob, and Eve agents trained on 16-bit plaintext — achieving
+                                    near-perfect secrecy with zero pre-programmed cryptographic logic.</div>
                                 <div class="repo-footer">
                                     <span class="lang-dot" style="background:#3572a5;"></span><span>Python</span>
                                 </div>
                             </div>
                         </a>
 
-                        <a href="https://github.com/arjungop/bluesky-sentiment-pipeline" target="_blank" class="repo-card featured">
+                        <a href="https://github.com/arjungop/bluesky-sentiment-pipeline" target="_blank"
+                            class="repo-card featured">
                             <div class="card-banner">
-                                <img src="./axiom-preview.webp" alt="Axiom sentiment pipeline dashboard preview" width="800" height="800" loading="lazy">
+                                <img src="./axiom-preview.webp" alt="Axiom sentiment pipeline dashboard preview"
+                                    width="800" height="800" loading="lazy">
                             </div>
                             <div class="card-body">
                                 <div class="metric-badge">Lambda arch · Kafka + Spark + BERTweet</div>
@@ -2014,9 +2068,12 @@
                                     </svg>
                                     <span class="repo-name">Axiom</span>
                                 </div>
-                                <div class="repo-desc">Real-time Bluesky social media sentiment pipeline: Lambda Architecture with Kafka, Spark, HDFS, PostgreSQL, Airflow, Grafana &amp; custom BERTweet AI model.</div>
+                                <div class="repo-desc">Real-time Bluesky social media sentiment pipeline: Lambda
+                                    Architecture with Kafka, Spark, HDFS, PostgreSQL, Airflow, Grafana &amp; custom
+                                    BERTweet AI model.</div>
                                 <div class="repo-footer">
-                                    <span class="lang-dot" style="background:#3572a5;"></span><span>Python / Big Data</span>
+                                    <span class="lang-dot" style="background:#3572a5;"></span><span>Python / Big
+                                        Data</span>
                                 </div>
                             </div>
                         </a>
@@ -2122,9 +2179,11 @@
                                     d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8" />
                             </svg>
                         </a>
-                        <a href="https://scholar.google.com/citations?user=7_mBknoAAAAJ" target="_blank" aria-label="Google Scholar">
+                        <a href="https://scholar.google.com/citations?user=7_mBknoAAAAJ" target="_blank"
+                            aria-label="Google Scholar">
                             <svg viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M12 3L1 9l4 2.18v6L12 21l7-3.82v-6l2-1.09V17h2V9L12 3zm6.82 6L12 12.72 5.18 9 12 5.28 18.82 9zM17 15.99l-5 2.73-5-2.73v-3.72L12 14.72l5-2.45v3.72z"/>
+                                <path
+                                    d="M12 3L1 9l4 2.18v6L12 21l7-3.82v-6l2-1.09V17h2V9L12 3zm6.82 6L12 12.72 5.18 9 12 5.28 18.82 9zM17 15.99l-5 2.73-5-2.73v-3.72L12 14.72l5-2.45v3.72z" />
                             </svg>
                         </a>
                         <a href="https://linkedin.com/in/arjungopal-anilkumar" target="_blank" aria-label="LinkedIn">
@@ -2154,7 +2213,8 @@
 
                     <!-- Back-to-top -->
                     <a href="#home" class="back-to-top" aria-label="Back to top">
-                        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round">
                             <polyline points="4,10 8,6 12,10" />
                         </svg>
                         Back to top
@@ -2187,7 +2247,7 @@
 
                 const lenis = new Lenis({
                     // lerp yields a much more natural, physical friction than fixed duration
-                    lerp: 0.08, 
+                    lerp: 0.08,
                     wheelMultiplier: 0.9,
                     smoothTouch: false,
                     autoRaf: false
@@ -2202,7 +2262,7 @@
 
                 // ── GSAP Hero Pinning — desktop only (≥861px) ──────────────────────
                 ScrollTrigger.matchMedia({
-                    "(min-width: 861px)": function() {
+                    "(min-width: 861px)": function () {
                         ScrollTrigger.create({
                             trigger: "#home",
                             start: "top top",
